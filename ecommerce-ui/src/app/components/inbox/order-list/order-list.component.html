@@ -1,0 +1,91 @@
+<app-header-user></app-header-user>
+<app-header-admin></app-header-admin>
+
+<!-- Page Content List Categories-->
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3 display-6">
+        Things Store
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="">Home</a></li>
+        <li class="breadcrumb-item active">Mes commandes</li>
+    </ol>
+
+    <div class="card" >
+        <div class="card-header d-flex justify-content-between">
+          <h4>commande</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr>
+                        <th>N^ commande</th>
+                        <th>Date</th>
+                        <th>Etat</th>
+                        <th class="text-center">Quantité</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orders">
+                        <td>{{item.id}}</td>
+                        <td>{{item.dateCreated}}</td>
+                        <td>{{item.orderState}}</td>
+                        <td class="text-center">{{item.orderProducts.length}}</td>
+                        <td>
+                            <button
+                            class="btn btn-outline-secondary"
+                            (click)="verProductosOrden(item.id)"
+                            data-bs-toggle="modal"
+                            data-bs-target="#detailModal">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                Consulter
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center" *ngIf="orders.length===0">
+                <span class="text-muted">Aucune donnée à afficher</span>
+              </div>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailModalLabel">Détail ordre</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Produit</th>
+                        <th class="text-center">Quantite</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orderProducts">
+                        <td>{{item.id}}</td>
+                        <td>{{nombreProducto}}</td>
+                        <td class="text-center">{{item.quantity}}</td>
+                        <td>{{item.price}} TND</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-times-circle" aria-hidden="true"></i>Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>

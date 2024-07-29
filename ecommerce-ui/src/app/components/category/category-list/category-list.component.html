@@ -1,0 +1,44 @@
+<app-header-user></app-header-user>
+<app-header-admin></app-header-admin>
+
+<!-- Page Content List Categories-->
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3 display-6">
+        Things Store
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="">Home</a></li>
+        <li class="breadcrumb-item active">Catégories</li>
+    </ol>
+
+    <div class="card" >
+        <div class="card-header d-flex justify-content-between">
+          <h4>Catégories</h4>
+          <a class="btn btn-outline-primary" routerLink="/admin/categories/new"><i class="fa fa-plus-square" aria-hidden="true"></i> Ajouter une catégorie</a>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom de catégorie</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of categories">
+                        <td>{{item.name}}</td>
+                        <td><button class="btn btn-outline-secondary" [routerLink]="['/admin/categories/update/', item.id]"><i class="fa fa-eye" aria-hidden="true"></i> Voir</button> </td>
+                        <td><button class="btn btn-outline-danger" (click)="deleteCategory(item.id)"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</button>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center" *ngIf="categories.length===0">
+                <span class="text-muted">Aucune donnée à afficher</span>
+              </div>
+        </div>
+    </div>
+</div>
+<!-- /.container -->

@@ -1,0 +1,133 @@
+
+<app-header-user></app-header-user>
+<app-header-admin></app-header-admin>
+
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3 display-6">
+    Things Store
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/admin/products']">Produits</a></li>
+    <li class="breadcrumb-item active">Ajouter un produit</li>
+  </ol>
+
+
+  <div class="card" >
+    <div class="card-header">
+      <h4 class="text-center">Ajouter un produit</h4>
+    </div>
+
+    <div class="card-body">
+      <form class="form-horizontal" method="post" enctype="multipart/form-data" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group col-10 mb-2">
+          <label for="name">Nom de produit:</label>
+          <input id="name" formControlName="name" class="form-control"/>
+        </div>
+
+        <div  class="form-group col-4 mb-2">
+          <label for="code">Code de produit:</label>
+          <input id="code" formControlName="code" class="form-control"/>
+        </div>
+
+        <div class="form-group col-12 mb-2">
+          <label for="description">Description:</label>
+          <textarea class="form-control" aria-label="With textarea" id="description" formControlName="description"></textarea>
+        </div>
+
+        <div class="form-group col-4 mb-2">
+          <label for="price">Prix:</label>
+          <input id="price" formControlName="price" type="number" class="form-control"/>
+        </div>
+
+       <!--  <div>
+          <label for="urlImage">URL Image:</label>
+          <input id="urlImage" formControlName="urlImage" />
+        </div> -->
+
+        <div class="form-group col-4 mb-2">
+          <label for="image">Image:</label>
+          <div *ngIf="productForm.get('urlImage')?.value != ''">
+            <img src="{{productForm.get('urlImage')?.value}}" alt="Imagen de producto" style="width: 30%; border-radius: 5px; margin-right: 8px;">
+            <button type="button" class="btn btn-outline-secondary btn-sm" (click)="habilitarCambiarImagen()">changer l'image</button>
+          </div>
+          <input id="image" type="file" (change)="onFileSelected($event)" class="form-control" *ngIf="productForm.get('urlImage')?.value === ''"/>
+        </div>
+
+        <div class="form-group col-6 mb-2">
+          <label class="control-label col-sm-4" for="nombre">choisissez une catégorie:</label>
+          <div class="col-sm-10">
+            <div class="combo-box">
+              <select class="form-select" name="category" formControlName="categoryId" aria-label="Default select example">
+                <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-4">
+          <i class="fa fa-plus-square" aria-hidden="true"></i>
+          Ajouter
+        </button>
+
+
+    <!--     <div>
+          <label for="userId">User ID:</label>
+          <input id="userId" formControlName="userId" />
+        </div>
+
+        <div>
+          <label for="categoryId">Category ID:</label>
+          <input id="categoryId" formControlName="categoryId" />
+        </div> -->
+
+        <!-- <div class="form-group">
+          <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombre" name="nombre"
+            placeholder="Ingrese el nombre del producto" autocomplete="off" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="descripcion">Descripción:</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="descripcion" name="descripcion"
+            placeholder="Ingrese la descripcion del producto" required
+            autocomplete="off"> </textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="precio">Precio:</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" step="any" id="precio" name="precio"
+            placeholder="Ingrese el precio del producto" autocomplete="off" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="img">Imagen:</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control-file" id="img" name="img">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <button type="submit" class="btn btn-success">
+              <span class="glyphicon glyphicon-saved"></span> Guardar
+            </button>
+          </div>
+        </div> -->
+
+      </form>
+    </div>
+
+
+  </div>
+
+</div>

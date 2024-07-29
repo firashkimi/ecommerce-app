@@ -1,0 +1,101 @@
+<nav
+  class="navbar navbar-expand-lg navbar-secondary bg-secondary fixed-top"
+  *ngIf="active"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['']"
+      ><img class="logo" src="assets/images/ahlemlogo.png"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item align-content-center me-3">
+          <a class="nav-link" [routerLink]="['/cart/sumary']">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span
+              class="position-absolute top-1 start-99 translate-middle badge rounded-pill bg-danger"
+              *ngIf="count != 0"
+            >
+              {{ count }}
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <span class="fw-bolder p-2 text-xl-start text-light text-uppercase">Bienvenue</span> <br />
+          <a  class="nav-link d-inline" [routerLink]="['/user/login']" *ngIf="!logged">Connexion</a>
+           <a class="nav-link d-inline" [routerLink]="['/user/register']" *ngIf="!logged">Créer un compte</a>
+        </li>
+        <!-- <li class="nav-item"><a class="nav-link" [routerLink]="['/logout']" >Logout</a></li> -->
+        <li class="nav-item dropdown " *ngIf="logged">
+         
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ usuario }}
+          </a>
+          <ul class="dropdown-menu ">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/user/data']"
+                ><i class="fas fa-user"></i> Mon profile</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/user/orders']"
+                ><i class="fa fa-credit-card" aria-hidden="true"></i> Mes commandes</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/logout']">
+                <i class="fa fa-sign-out pl-1" aria-hidden="true"></i>
+                Déconnexion
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal -->
+<!-- <div
+  class="modal fade"
+  id="infoModal"
+  tabindex="-1"
+  aria-labelledby="infoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalLabel">Información</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Esto ha sido creado y personalizado por <b>César Rodrigo Ramírez</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->

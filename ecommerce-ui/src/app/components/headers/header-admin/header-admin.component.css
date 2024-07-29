@@ -1,0 +1,19 @@
+.logo {
+    height: 54px;
+    width: 114px;
+  }
+  
+  nav {
+    background: rgb(65, 91, 191);
+    background: linear-gradient(
+      157deg,
+      rgba(65, 91, 191, 1) 0%,
+      rgba(0, 215, 255, 1) 90%,
+      rgba(113, 218, 235, 1) 99%
+    );
+  }
+  
+
+  .d-flex{
+    gap:25px;
+  }

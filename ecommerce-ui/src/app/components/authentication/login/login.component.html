@@ -1,0 +1,39 @@
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6 ">
+      <div class="card mt-4 pl-4 pr-4 rounded-2 border border-success">
+        <div class="card-header  ">
+          <div class="d-flex justify-content-center align-content-center   ">
+
+            <img [src]="['/assets/images/Design sans titre (2).png']" class="d-flex rounded-circle justify-content-center align-content-center" alt="">
+          </div>
+          <h5 class="text-center mt-2">CONNECTEZ-VOUS À VOTRE COMPTE
+          </h5>
+        </div>
+        <div class="card-body">
+          <form  method="post" enctype="multipart/form-data" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <input type="email" class="form-control" id="email" name="email" placeholder="ADRESSE E-MAIL" required autocomplete="off" formControlName="username">
+            </div>
+            <div class="form-group mb-3">
+              <input type="password" class="form-control" id="password" name="password" placeholder="MOT DE PASSE" required formControlName="password">
+            </div>
+            <div class="form-group mb-3">
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success"> <i class="fa fa-sign-in" aria-hidden="true"></i><span class="glyphicon glyphicon-ok"></span> Connexion</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="col-12">
+            <div class="alert alert-info" role="alert">
+              Pas de compte ?  <a [routerLink]="['/user/register']" style="text-decoration: none; color: cadetblue;"  class="card-link">Créez-en un</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <!-- /.container -->

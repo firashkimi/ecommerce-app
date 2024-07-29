@@ -1,0 +1,65 @@
+ <!-- Page Content -->
+ <app-header-user></app-header-user>
+ <app-header-admin></app-header-admin>
+
+ <div class="container">
+
+  <div class="card mt-4 pl-4 pr-4">
+    <div class="card-header">
+      <h5>Ajouter un utilisateur </h5>
+    </div>
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="name">Nom:</label> <input type="text"
+            class="form-control" id="name" name="name"
+            placeholder="" autocomplete="off" formControlName="firstname">
+        </div>
+
+       <div class="form-group mb-3">
+          <label for="surname">Prénom:</label> <input type="text"
+            class="form-control" id="surname" name="surname"
+            placeholder="" autocomplete="off" formControlName="lastname">
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="email">Email:</label> <input type="email"
+            class="form-control" id="email" name="email"
+            placeholder="" autocomplete="off" formControlName="email">
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="address">Address :</label> <input type="text"
+            class="form-control" id="address" name="address"
+            placeholder="" autocomplete="off" formControlName="address">
+        </div>
+       <div class="form-group mb-3">
+          <label for="cellphone">Num de télphone :</label> <input type="text"
+            class="form-control" id="cellphone" name="cellphone"
+            placeholder="" autocomplete="off" formControlName="cellphone">
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="password">Mot de passe :</label> <input type="password"
+            class="form-control" id="password" name="password" placeholder="" autocomplete="off" formControlName="password">
+        </div>
+
+        <div class="form-group col-6 mb-2">
+          <label class="control-label col-sm-4" for="nombre">Sélectionner un role:</label>
+          <div class="col-sm-10">
+            <div class="combo-box">
+              <select class="form-select" name="category" formControlName="userType" aria-label="Default select example">
+                <option [value]="typeUSER">USER</option>
+                <option [value]="typeADMIN">ADMIN</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-2 mt-3">
+          <button type="submit" class="btn btn-success"><i class="fa fa-plus-square" aria-hidden="true"></i> Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

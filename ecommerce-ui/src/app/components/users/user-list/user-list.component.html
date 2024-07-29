@@ -1,0 +1,52 @@
+<app-header-user></app-header-user>
+<app-header-admin></app-header-admin>
+
+<!-- Page Content List Categories-->
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3 display-6">
+        Things Store
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="">Home</a></li>
+        <li class="breadcrumb-item active">Liste des utilisateurs</li>
+    </ol>
+
+    <div class="card" >
+        <div class="card-header d-flex justify-content-between">
+          <h4>Liste des utilisateurs</h4>
+          <a class="btn btn-outline-primary" routerLink="/admin/users/register"><i class="fa fa-plus-square" aria-hidden="true"></i> Ajouter un utilisateur</a>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom de utilisateur</th>
+                        <th>Prénom</th>
+                        <th>Role</th>
+                        <th>Email</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of users">
+                        <td>{{item.id}}</td>
+                        <td>{{item.firstname}}</td>
+                        <td>{{item.lastname}}</td>
+                        <td>{{item.userType}}</td>
+                        <td>{{item.username}}</td>
+                        <td><button class="btn btn-outline-secondary" [routerLink]="['/admin/users/update/', item.id]" [disabled]="logged!=item.id"><i class="fa fa-eye" aria-hidden="true"></i> Consulter</button> </td>
+                        <td><button class="btn btn-outline-warning"><i class="fa fa-refresh" aria-hidden="true"></i> Supprimer</button>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center" *ngIf="users.length===0">
+                <span class="text-muted">Aucune donnée à afficher</span>
+              </div>
+        </div>
+    </div>
+</div>
+<!-- /.container -->

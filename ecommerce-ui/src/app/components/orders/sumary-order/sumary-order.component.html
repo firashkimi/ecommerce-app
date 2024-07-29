@@ -1,0 +1,107 @@
+<!-- Header User-->
+<app-header-user></app-header-user>
+<app-header-admin></app-header-admin>
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3 display-6">
+    Things Store
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+    <li class="breadcrumb-item active">Ordre</li>
+  </ol>
+
+  <!-- Blog Post -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-9">
+          <div >
+            <div class="card">
+              <div class="card-header" >
+                <h5>
+                  Données de l’ordre
+                </h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong> Nom: </strong> {{firstname}} {{lastname}}</li>
+                  <li class="list-group-item"><strong>Email: </strong> {{email}}</li>
+                  <li class="list-group-item"><strong> Address: </strong> {{address}}</li>
+                </ul>
+<!--                 <h6><strong> Nombre: </strong> </h6>
+                <h6><strong>Correo: </strong>  </h6>
+                <h6><strong> Dirección: </strong></h6> -->
+              </div>
+
+            </div>
+
+            <div >
+
+              <div class="card-body">
+                <div class="row" *ngIf="items.length===0">
+                  <div class="alert alert-light" role="alert">
+                    Aucun produit n’a encore été ajouté à votre panier. <a [routerLink]="['/']">Retournez à la boutique.</a>
+                 </div>
+             </div>
+                <table class="table" *ngIf="items.length!=0">
+                  <thead>
+                    <tr>
+                      <th scope="col">Produit</th>
+                      <th scope="col">Prix</th>
+                      <th scope="col">Quantité</th>
+                      <th scope="col">Total</th>
+                      <th>Supprimer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of items">
+                      <td>{{item.productName}}(Code: {{item.productId}})</td>
+                      <td>{{item.price}}</td>
+                      <td>{{item.quantity}}</td>
+                      <td>{{item.getTotalPriceItem()}}</td>
+                      <td><button class="btn btn-outline-danger" (click)="deleteItem(item.productId)">Supprimer</button> </td>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-3">
+          <div class="card">
+            <div class="card-header">
+              <h5>Résume de l ordre</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item mb-3">
+                  <h5> Total Gs. {{total}}</h5>
+                </li>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="pagoPaypal" (change)="verifChecked()">
+                  <label class="form-check-label" for="pagoPaypal">Paypal</label>
+                </div>
+                <hr>
+                <button class="btn btn-dark" (click)="generateOrder()" [disabled]="items.length==0">
+                  <i class="fa fa-credit-card" aria-hidden="true"></i>
+                  Payer 
+                  <span *ngIf="pagoPaypal===false">En espèces</span>
+                  <span *ngIf="pagoPaypal===true">Par Paypal</span>
+                </button>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container -->

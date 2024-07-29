@@ -1,0 +1,68 @@
+<app-header-user></app-header-user>
+<app-header-admin></app-header-admin>
+
+<!-- Page Content -->
+<div class="container">
+
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3 display-6">
+    Things Store
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+    <li class="breadcrumb-item active">Détail produit</li>
+  </ol>
+
+  <!-- Blog Post -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6">
+          <a href="#">
+            <img class="img-fluid rounded" src="{{cartForm.get('urlImage')?.value}}"  alt="">
+            <img class="img-fluid rounded" *ngIf="!cartForm.get('urlImage')?.value" src="http://localhost:3000/images/default.jpg"  alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <form action="#" method="POST" [formGroup]="cartForm" >
+            <h5>Nom produit:</h5>
+            <h6 class="card-title display-6">{{cartForm.get('name')?.value}}</h6>
+
+            <hr>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item mb-2"><h5>Prix:  <span style="font-weight: bold;"> {{cartForm.get('price')?.value}} TND</span></h5> </li>
+              <li class="list-group-item mb-2">
+                <h5 >Description:</h5>
+                {{cartForm.get('description')?.value}}
+              </li>
+              <li class="list-group-item">
+                <div class="row g-2 align-items-center">
+                  <div class="col-auto">
+                    <h5>
+                      <label for="quantity">Quantité:</label>
+                    </h5>
+                  </div>
+                  <div class="col-auto">
+                    <input class="form-control" type="number" id="quantity" formControlName="quantity" name="quantity" autocomplete="off" min="1" max="5" value="1">
+                  </div>
+                </div>
+
+              </li>
+            </ul>
+
+            <div class="row g-2">
+              <button type="button" class="btn btn-dark mt-3" (click)="addCart(cartForm.get('id')?.value)" [disabled]="cartForm.get('quantity')?.value === 0 || userType==='ADMIN'">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Ajouter au panier 
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container -->
